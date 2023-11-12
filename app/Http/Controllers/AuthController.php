@@ -96,4 +96,15 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+
+    public function logout(){
+        Auth::user()->currentAccessToken()->update([
+            "expires_at"=>now()
+        ]);
+        return response()->json([
+            'status' => true,
+            'message' => 'you logout successfully!',
+        ], 200);
+    }
 }

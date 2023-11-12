@@ -20,6 +20,7 @@ use App\Http\Controllers\PartitionController;
 Route::get('/login', function () {
 })->name('login');
 Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function(){
+    Route::post('/logout', [AuthController::class, 'logout']);
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('partitions', PartitionController::class);
     Route::apiResource('items', ItemController::class);
